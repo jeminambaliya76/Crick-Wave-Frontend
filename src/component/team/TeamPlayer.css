@@ -1,0 +1,64 @@
+/* Style the main container */
+.player-container {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Header style */
+  .player-header {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #444;
+  }
+  
+  /* Card grid layout */
+  .player-card-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  
+  /* Card styling */
+  .player-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    background: #fff;
+    text-align: center;
+  }
+  
+  /* Circle image */
+  .player-image img {
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+  }
+  
+  /* Card title */
+  .player-card h3 {
+    color: #007bff;
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  /* Card details */
+  .player-card p {
+    margin: 5px 0;
+    color: #555;
+  }
+  
+  /* Link styling */
+  .player-card a {
+    color: #007bff;
+    text-decoration: none;
+    font-size: 14px;
+  }
+  
+  .player-card a:hover {
+    text-decoration: underline;
+  }
+  

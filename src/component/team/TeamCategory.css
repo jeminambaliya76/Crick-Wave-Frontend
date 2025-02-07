@@ -1,0 +1,101 @@
+/* Global Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background: linear-gradient(to right, #2c3e50, #4ca1af);
+  color: #fff;
+}
+
+/* Container for the homepage */
+.home-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-align: center;
+  padding: 20px;
+  background: #34495e;
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Heading and Subtitle */
+.home-container h1 {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #ecf0f1;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+.home-container p {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+  color: #bdc3c7;
+}
+
+/* Buttons */
+.button {
+  display: inline-block;
+  padding: 15px 30px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #fff;
+  background-color: #e67e22;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  margin: 10px;
+}
+
+.button:hover {
+  background-color: #d35400;
+  transform: translateY(-3px);
+}
+
+.button:active {
+  transform: translateY(1px);
+}
+
+/* Grid layout for displaying cricket data */
+.cricket-data-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+  max-width: 1200px;
+  margin-top: 40px;
+  padding: 0 20px;
+  color: #ecf0f1;
+}
+
+.cricket-data-item {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  transition: background-color 0.3s ease;
+}
+
+.cricket-data-item:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.cricket-data-item h3 {
+  font-size: 1.5rem;
+  color: #f39c12;
+  margin-bottom: 10px;
+}
+
+.cricket-data-item p {
+  font-size: 1rem;
+  color: #bdc3c7;
+}
+

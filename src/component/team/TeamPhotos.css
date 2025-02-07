@@ -1,0 +1,30 @@
+.photos-container {
+    padding: 20px;
+    text-align: center;
+}
+
+.photos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    justify-items: center;
+}
+
+.photo-card {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 10px;
+    max-width: 300px;
+    text-align: center;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.photo-img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.photo-info {
+    margin-top: 10px;
+}
