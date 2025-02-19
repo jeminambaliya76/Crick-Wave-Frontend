@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import './TeamPlayer.css'; // Import CSS file for styling
+import './TeamPlayer.css'; // Import the updated CSS file
 
 function TeamPlayer() {
     const location = useLocation();
@@ -23,7 +23,7 @@ function TeamPlayer() {
     }, [apiUrl]); // Dependency array includes apiUrl to handle changes
 
     if (!apiUrl) {
-        return <div>Error: No API URL provided.</div>;
+        return <div className="error-message">Error: No API URL provided.</div>;
     }
 
     const handleProfileClick = (url) => {

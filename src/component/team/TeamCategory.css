@@ -1,101 +1,171 @@
-/* Global Reset */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+.cricket-teams-container {
+  background: linear-gradient(135deg, #ffffff 0%, #f1f1f1 100%); /* White to light gray gradient */
+  padding: 1.5rem 2rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+  margin: 5px;
 }
 
-body {
-  font-family: 'Roboto', sans-serif;
-  background: linear-gradient(to right, #2c3e50, #4ca1af);
-  color: #fff;
-}
-
-/* Container for the homepage */
-.home-container {
+.nav-pills-container {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  text-align: center;
-  padding: 20px;
-  background: #34495e;
-  border-radius: 10px;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  justify-content: space-around;
+  gap: 1rem;
 }
 
-/* Heading and Subtitle */
-.home-container h1 {
-  font-size: 3rem;
-  font-weight: bold;
-  color: #ecf0f1;
-  margin-bottom: 20px;
+.nav-pills-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 1rem;
+}
+
+.nav-pills-list li {
+  text-decoration: none;
+  border-bottom: none;
+}
+
+.teamtype-heading {
+  color: #000; /* Changed to black */
+}
+
+.nav-pill {
+  padding: 0.8rem 1.5rem;
+  border-radius: 30px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  background: rgba(0, 0, 0, 0.1); /* Changed to darker gray */
+  color: #000; /* Changed to black */
+  backdrop-filter: blur(5px);
+  border: 2px solid rgba(0, 0, 0, 0.2); /* Changed border color */
+}
+
+.nav-pill:hover {
+  background: #27ae60; /* Deep green */
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(39, 174, 96, 0.4);
+  border-color: transparent;
+}
+
+.nav-pill.active {
+  background: #f1c40f; /* Gold */
+  color: #ffffff; /* White */
+  border-color: transparent;
+  box-shadow: 0 4px 10px rgba(241, 196, 15, 0.3);
+}
+
+/* Team Container */
+.team-container {
+  text-align: center;
+}
+
+.teamtype-heading {
+  color: #000; /* Changed to black */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.team-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 20px;
+  justify-content: center;
+}
+
+.team-card {
+  background: linear-gradient(145deg, #ffffff, #f8f9fa);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  padding: 15px;
+  text-align: center;
+}
+
+.image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(45deg, #ffffff, #f1f1f1); /* Light gray gradient */
+  padding: 10px;
+  border-radius: 50%;
+  width: 85px;
+  height: 85px;
+  margin: 0 auto 10px;
+}
+
+.team-card img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  border-radius: 50%;
+  border: 2px solid #ffffff;
+}
+
+.team-card h3 {
+  color: #000; /* Changed to black */
+  margin: 10px 0;
+  font-size: 1.2rem;
+  font-weight: 700;
   text-transform: uppercase;
 }
 
-.home-container p {
-  font-size: 1.2rem;
-  margin-bottom: 30px;
-  color: #bdc3c7;
+.card-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 10px;
 }
 
-/* Buttons */
-.button {
-  display: inline-block;
-  padding: 15px 30px;
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: #fff;
-  background-color: #e67e22;
+.card-buttons button {
+  background-color: #27ae60; /* Deep green */
+  color: white;
   border: none;
-  border-radius: 25px;
+  padding: 6px 10px;
+  border-radius: 20px;
   cursor: pointer;
-  text-decoration: none;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-  margin: 10px;
+  transition: all 0.3s ease;
+  font-weight: 600;
+  font-size: 0.75rem;
 }
 
-.button:hover {
-  background-color: #d35400;
-  transform: translateY(-3px);
+.card-buttons button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 10px rgba(39, 174, 96, 0.4);
+  background-color: #219653; /* Darker green */
 }
 
-.button:active {
-  transform: translateY(1px);
+.team-card:hover {
+  transform: translateY(-5px);
 }
 
-/* Grid layout for displaying cricket data */
-.cricket-data-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 20px;
-  max-width: 1200px;
-  margin-top: 40px;
-  padding: 0 20px;
-  color: #ecf0f1;
-}
-
-.cricket-data-item {
-  background: rgba(255, 255, 255, 0.1);
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-  transition: background-color 0.3s ease;
-}
-
-.cricket-data-item:hover {
-  background-color: rgba(255, 255, 255, 0.2);
-}
-
-.cricket-data-item h3 {
-  font-size: 1.5rem;
-  color: #f39c12;
-  margin-bottom: 10px;
-}
-
-.cricket-data-item p {
+.no-teams {
+  color: #000; /* Changed to black */
   font-size: 1rem;
-  color: #bdc3c7;
+  text-align: center;
+  width: 100%;
+  padding: 20px;
 }
 
+@media (max-width: 768px) {
+  .team-list {
+    grid-template-columns: 1fr;
+  }
+
+  .card-buttons {
+    flex-direction: column;
+  }
+
+  .card-buttons button {
+    width: 100%;
+  }
+}

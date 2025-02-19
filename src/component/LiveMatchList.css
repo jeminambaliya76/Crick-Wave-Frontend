@@ -1,33 +1,170 @@
-.match-container {
-    padding: 20px;
-    text-align: center;
-  }
-  
-  .match-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
-  }
-  
-  .match-card {
-    background: white;
-    padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 300px;
-    text-align: left;
-  }
-  
-  .match-card h3 {
-    margin-bottom: 10px;
-  }
-  
-  .match-link {
-    display: block;
-    margin-top: 10px;
-    color: blue;
-    text-decoration: none;
-    font-weight: bold;
-  }
-  
+/* Centering the card container */
+.match-card-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  gap: 0.75rem; /* Reduced gap */
+  flex-wrap: wrap;
+  margin-top: 1.5rem; /* Reduced margin */
+}
+
+/* Match card container */
+.match-card {
+  background: linear-gradient(145deg, #4CAF50, #4CAF50);
+  border-radius: 10px; /* Smaller border radius */
+  padding: 0.75rem; /* Reduced padding */
+  margin: 0.25rem; /* Reduced margin */
+  color: white;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Reduced shadow */
+  width: 220px; /* Reduced width */
+  min-height: 280px; /* Reduced height */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Glow effect */
+.match-card.glow {
+  border: 1px solid rgba(255, 255, 255, 0.1); /* Thinner border */
+}
+
+.match-card:hover {
+  transform: translateY(-2px); /* Smaller hover effect */
+}
+
+/* Card header */
+.card-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 0.75rem; /* Reduced margin */
+}
+
+.teams-title {
+  font-size: 1rem; /* Smaller font size */
+  margin: 0;
+  color: #2C6B2F;
+  text-transform: uppercase;
+  letter-spacing: 0.3px; /* Reduced letter spacing */
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Teams container (vertical) */
+.teams-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.25rem; /* Reduced gap */
+  margin: 0.75rem 0; /* Reduced margin */
+  min-height: 90px; /* Reduced height */
+}
+
+.team {
+  padding: 0.25rem; /* Reduced padding */
+  border-radius: 6px; /* Smaller border radius */
+  text-align: center;
+  background: rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+  font-size: 0.9rem; /* Smaller font size */
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.vs-badge-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 24px; /* Reduced height */
+}
+
+.vs-badge {
+  background: #F39C12;
+  padding: 0.1rem 0.5rem; /* Reduced padding */
+  border-radius: 12px; /* Smaller border radius */
+  font-weight: bold;
+  text-align: center;
+  font-size: 0.8rem; /* Smaller font size */
+}
+
+/* Status pill */
+.status-pill {
+  background: #5D6D7E;
+  padding: 0.4rem 0.8rem; /* Reduced padding */
+  border-radius: 15px; /* Smaller border radius */
+  text-align: center;
+  margin: 0.75rem 0; /* Reduced margin */
+  font-weight: bold;
+  color: white;
+  border: 1px solid #34495E; /* Thinner border */
+  font-size: 0.9rem; /* Smaller font size */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Reduced shadow */
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Status pill hover effect */
+.status-pill:hover {
+  transform: scale(1.03); /* Smaller hover effect */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Reduced shadow */
+}
+
+/* View details button */
+.view-details-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem; /* Reduced gap */
+  background: linear-gradient(45deg, #1ABC9C, #16A085);
+  color: white;
+  padding: 0.4rem 0.8rem; /* Reduced padding */
+  border-radius: 20px; /* Smaller border radius */
+  text-decoration: none;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  font-size: 0.8rem; /* Smaller font size */
+}
+
+.view-details-btn:hover {
+  background: linear-gradient(45deg, #16A085, #1ABC9C);
+  transform: translateY(-1px); /* Smaller hover effect */
+  box-shadow: 0 3px 6px rgba(255, 71, 87, 0.3); /* Reduced shadow */
+}
+
+/* Arrow icon inside view details button */
+.arrow-icon {
+  font-weight: bold;
+  transition: transform 0.3s ease;
+}
+
+.view-details-btn:hover .arrow-icon {
+  transform: translateX(2px); /* Smaller hover effect */
+}
+
+/* Match venue text */
+.match-venue {
+  text-align: center;
+  margin-top: 0.25rem; /* Reduced margin */
+  font-size: 0.7rem; /* Smaller font size */
+  color: #555;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Body background color */
+body {
+  background-color: #F9F9F9;
+  color: #333;
+}

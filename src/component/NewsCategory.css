@@ -1,101 +1,140 @@
-/* Global Reset */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+/* NewsCategory.css */
 
-body {
-  font-family: 'Roboto', sans-serif;
-  background: linear-gradient(to right, #2c3e50, #4ca1af);
-  color: #fff;
-}
-
-/* Container for the homepage */
-.home-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  text-align: center;
+/* General Styles */
+.news-container {
+  font-family: 'Arial', sans-serif;
+  max-width: 1200px;
+  margin: 0 auto;
   padding: 20px;
-  background: #34495e;
+  background-color: #f9f9f9;
   border-radius: 10px;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Heading and Subtitle */
-.home-container h1 {
-  font-size: 3rem;
-  font-weight: bold;
-  color: #ecf0f1;
+.news-header {
+  text-align: center;
+  color: #2c3e50;
+  font-size: 2.5rem;
   margin-bottom: 20px;
-  text-transform: uppercase;
+  font-weight: bold;
 }
 
-.home-container p {
-  font-size: 1.2rem;
-  margin-bottom: 30px;
-  color: #bdc3c7;
+/* Tab Navigation */
+.nav-pills-container {
+  margin-bottom: 20px;
 }
 
-/* Buttons */
-.button {
-  display: inline-block;
-  padding: 15px 30px;
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: #fff;
-  background-color: #e67e22;
+.nav-pills-list {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  flex-wrap: wrap;
+}
+
+.nav-pills-list li {
+  margin: 5px;
+}
+
+.nav-pill {
+  background-color: #3498db;
+  color: white;
   border: none;
+  padding: 10px 20px;
   border-radius: 25px;
   cursor: pointer;
-  text-decoration: none;
+  font-size: 1rem;
   transition: background-color 0.3s ease, transform 0.2s ease;
-  margin: 10px;
 }
 
-.button:hover {
-  background-color: #d35400;
-  transform: translateY(-3px);
+.nav-pill:hover {
+  background-color: #2980b9;
+  transform: translateY(-2px);
 }
 
-.button:active {
-  transform: translateY(1px);
+.nav-pill.active {
+  background-color: #e74c3c;
+  font-weight: bold;
 }
 
-/* Grid layout for displaying cricket data */
-.cricket-data-grid {
+/* News Content */
+.news-content {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 20px;
-  max-width: 1200px;
-  margin-top: 40px;
-  padding: 0 20px;
-  color: #ecf0f1;
 }
 
-.cricket-data-item {
-  background: rgba(255, 255, 255, 0.1);
-  padding: 20px;
+.news-item {
+  background-color: white;
   border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-  transition: background-color 0.3s ease;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
 }
 
-.cricket-data-item:hover {
-  background-color: rgba(255, 255, 255, 0.2);
+.news-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
-.cricket-data-item h3 {
+.news-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.news-details {
+  padding: 15px;
+}
+
+.news-title {
+  color: #2c3e50;
   font-size: 1.5rem;
-  color: #f39c12;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.news-description {
+  color: #7f8c8d;
+  font-size: 1rem;
+  line-height: 1.5;
   margin-bottom: 10px;
 }
 
-.cricket-data-item p {
-  font-size: 1rem;
-  color: #bdc3c7;
+.news-date {
+  color: #95a5a6;
+  font-size: 0.875rem;
 }
 
+.no-news {
+  text-align: center;
+  color: #e74c3c;
+  font-size: 1.2rem;
+  margin-top: 20px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .news-header {
+    font-size: 2rem;
+  }
+
+  .nav-pill {
+    padding: 8px 16px;
+    font-size: 0.875rem;
+  }
+
+  .news-content {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+
+  .news-title {
+    font-size: 1.25rem;
+  }
+
+  .news-description {
+    font-size: 0.875rem;
+  }
+}

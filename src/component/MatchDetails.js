@@ -3,92 +3,161 @@ import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import './MatchDetails.css';
 
 const MatchDetails = () => {
-    const { matchId, matchName } = useParams();
-    const [matchDetails, setMatchDetails] = useState(null);
-    const location = useLocation();
-    const queryParams = new URLSearchParams(location.search);
-    const apiUrl = location.state?.apiUrl; // Retrieve the dynamic URL passed from Team
-    const navigate = useNavigate();  // To handle navigation
+  const { matchId, matchName } = useParams();
+  const [matchDetails, setMatchDetails] = useState(null);
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const apiUrl = location.state?.apiUrl;
+  const navigate = useNavigate();
 
-    const teams = queryParams.get('teams');
-    const handleProfileClick = (url) => {
-      navigate('/teams/player/profile', { state: { apiUrl: url } });
+  const teams = queryParams.get('teams');
+
+  const handleProfileClick = (url) => {
+    navigate('/teams/player/profile', { state: { apiUrl: url } });
   };
+
   useEffect(() => {
     fetch(`http://localhost:8080/live-cricket-scores/${matchId}/${matchName}`)
-      .then(response => response.json())
-      .then(data => setMatchDetails(data[0]))
-      .catch(error => console.error('Error fetching match details:', error));
+      .then((response) => response.json())
+      .then((data) => setMatchDetails(data[0]))
+      .catch((error) => console.error('Error fetching match details:', error));
   }, [matchId, matchName]);
 
   if (!matchDetails) {
-    return <div>Loading match details...</div>;
+    return <div className="loading">Loading match details...</div>;
   }
 
   return (
     <div className="match-details-container">
-      <h2>Match Details</h2>
-      <p><strong>{teams}</strong> </p> {/* Use passed teams */}
-      <p><strong>Score:</strong> {matchDetails.team2Score}</p>
-      <p><strong>Live Update:</strong> {matchDetails.liveUpdate}</p>
-      <h3>Batter Details</h3>
-<table style={{ width: '100%', borderCollapse: 'collapse', margin: '0 auto' }}>
-  <thead>
-    <tr>
-      <th style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'center' }}>Player</th>
-      <th style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'center' }}>Runs</th>
-      <th style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'center' }}>Balls</th>
-      <th style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'center' }}>Fours</th>
-      <th style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'center' }}>Sixes</th>
-      <th style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'center' }}>SR</th>
-    </tr>
-  </thead>
-  <tbody>
-    {matchDetails.batterDetails.map((batter, index) => (
-      <tr key={index}>
-        <td onClick={() =>handleProfileClick(batter.playerUrl)} style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'center' }}>
-          <a  target="_blank" rel="noopener noreferrer">{batter.playerName}</a>
-        </td>
-        <td style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'center' }}>{batter.R}</td>
-        <td style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'center' }}>{batter.B}</td>
-        <td style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'center' }}>{batter.fours}</td>
-        <td style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'center' }}>{batter.sixs}</td>
-        <td style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'center' }}>{batter.SR}</td>
-      </tr>
-    ))}
-  </tbody>
-</table>
+      {/* Match Header */}
+      <div className="match-header">
+        <h1 className="teams">{teams}</h1>
+        <p className="series">{matchDetails.series}</p>
+        <div className="match-meta">
+          <span className="venue">{matchDetails.venue}</span>
+          <span className="date">{matchDetails.dateTime}</span>
+        </div>
+      </div>
 
-<h3>Bowler Details</h3>
-<table style={{ width: '100%', borderCollapse: 'collapse', margin: '0 auto' }}>
-  <thead>
-    <tr>
-      <th style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'center' }}>Player</th>
-      <th style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'center' }}>Wickets</th>
-      <th style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'center' }}>Runs</th>
-      <th style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'center' }}>ECO</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td onClick={() =>handleProfileClick(matchDetails.bowlerDetails.playerUrl)} style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'center' }}>
-        <a target="_blank" rel="noopener noreferrer">
-          {matchDetails.bowlerDetails.playerName}
-        </a>
-      </td>
-      <td style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'center' }}>{matchDetails.bowlerDetails.W}</td>
-      <td style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'center' }}>{matchDetails.bowlerDetails.R}</td>
-      <td style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'center' }}>{matchDetails.bowlerDetails.ECO}</td>
-    </tr>
-  </tbody>
-</table>
+      {/* Live Status Bar */}
+      <div className="live-status-bar">
+        <div className="status-content">
+          <span className="live-indicator">● LIVE</span>
+          <span className="score">{matchDetails.team2Score}</span>
+          <span className="current-status">{matchDetails.liveUpdate}</span>
+        </div>
+      </div>
 
-      <h3>Commentary</h3>
-      <ul>
-        {matchDetails.commentary.map((comment, index) => (
-          <li key={index}>{comment.over} - {comment.commentary}</li>
-        ))}
-      </ul>
+      {/* Key Match Stats */}
+      <div className="stats-container">
+        <div className="key-stats">
+          <div className="stat-card">
+            <h4>Team 1 Score</h4>
+            <div className="stat-value">{matchDetails.team1Score}</div>
+          </div>
+          <div className="stat-card">
+            <h4>Current Run Rate</h4>
+            <div className="stat-value accent">{matchDetails.crr}</div>
+          </div>
+          <div className="stat-card">
+            <h4>Partnership</h4>
+            <div className="stat-value">{matchDetails.pship}</div>
+          </div>
+          <div className="stat-card">
+            <h4>Last 10 Overs</h4>
+            <div className="stat-value">{matchDetails.last10}</div>
+          </div>
+          <div className="stat-card">
+            <h4>Toss</h4>
+            <div className="stat-value">{matchDetails.toss}</div>
+          </div>
+          <div className="stat-card">
+            <h4>Player of the Match</h4>
+            <div className="stat-value">{matchDetails.playerOfTheMatch || 'N/A'}</div>
+          </div>
+          <div className="stat-card">
+            <h4>Player of the Series</h4>
+            <div className="stat-value">{matchDetails.playerOfTheSeries || 'N/A'}</div>
+          </div>
+        </div>
+      </div>
+
+      {/* Batter Details */}
+      {matchDetails.batterDetails && matchDetails.batterDetails.length > 0 && (
+        <div className="players-container">
+          <h3 className="section-title">Batting</h3>
+          <div className="players-table">
+            <div className="table-header">
+              <div>Batter</div>
+              <div>Runs</div>
+              <div>Balls</div>
+              <div>4s</div>
+              <div>6s</div>
+              <div>SR</div>
+            </div>
+            {matchDetails.batterDetails.map((batter, index) => (
+              <div className="table-row" key={index}>
+                <div
+                  className="player-name"
+                  onClick={() => batter.playerUrl && handleProfileClick(batter.playerUrl)}
+                >
+                  {batter.playerName || 'No Name'}
+                  {batter.playerName?.includes('*') && <span className="not-out">*</span>}
+                </div>
+                <div>{batter.R}</div>
+                <div>{batter.B}</div>
+                <div>{batter.fours}</div>
+                <div>{batter.sixs}</div>
+                <div>{batter.SR}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* Bowler Details */}
+      {matchDetails.bowlerDetails && Object.keys(matchDetails.bowlerDetails).length > 0 && (
+        <div className="players-container">
+          <h3 className="section-title">Bowling</h3>
+          <div className="players-table">
+            <div className="table-header">
+              <div>Bowler</div>
+              <div>Overs</div>
+              <div>Maidens</div>
+              <div>Runs</div>
+              <div>Wickets</div>
+              <div>Economy</div>
+            </div>
+            <div className="table-row">
+              <div className="player-name">
+                {matchDetails.bowlerDetails.playerName || 'No Name'}
+              </div>
+              <div>{matchDetails.bowlerDetails.O}</div>
+              <div>{matchDetails.bowlerDetails.M}</div>
+              <div>{matchDetails.bowlerDetails.R}</div>
+              <div>{matchDetails.bowlerDetails.W}</div>
+              <div>{matchDetails.bowlerDetails.ECO}</div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Commentary Section */}
+      <div className="commentary-container">
+        <h3 className="section-title">Ball-by-Ball Commentary</h3>
+        <div className="commentary-list">
+          {matchDetails.commentary && matchDetails.commentary.length > 0 ? (
+            matchDetails.commentary.map((comment, index) => (
+              <div className="commentary-item" key={index}>
+                <span className="over-number">{comment.over}</span>
+                <p className="comment-text">{comment.commentary}</p>
+              </div>
+            ))
+          ) : (
+            <div className="no-commentary">No commentary available</div>
+          )}
+        </div>
+      </div>
     </div>
   );
 };
